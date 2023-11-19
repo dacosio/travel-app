@@ -10,9 +10,11 @@ import {
   Recommended,
   PlaceDetails,
   HotelList,
+  HotelSearch,
 } from "./screens";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import HotelDetails from "./screens/details/HotelDetails";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Stack = createNativeStackNavigator();
 
@@ -72,6 +74,11 @@ export default function App() {
         <Stack.Screen
           name="HotelList"
           component={HotelList}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HotelSearch"
+          component={HotelSearch}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

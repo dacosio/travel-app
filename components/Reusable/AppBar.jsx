@@ -5,9 +5,19 @@ import { AntDesign } from "@expo/vector-icons";
 import ReusableText from "./ReusableText";
 import { SIZES, TEXT, COLORS } from "../../constants/theme";
 
-const AppBar = ({ bgColor, title, bgColorOne, icon, onPress }) => {
+const AppBar = ({
+  bgColor,
+  title,
+  bgColorOne,
+  icon,
+  onPress,
+  onPressOne,
+  top,
+  left,
+  right,
+}) => {
   return (
-    <View style={styles.overlay}>
+    <View style={styles.overlay(top, left, right)}>
       <View style={reusable.rowWithSpace("space-between")}>
         <TouchableOpacity style={styles.box(bgColor)} onPress={onPress}>
           <AntDesign name="left" size={26} />
@@ -19,7 +29,9 @@ const AppBar = ({ bgColor, title, bgColorOne, icon, onPress }) => {
           color={COLORS.black}
         />
 
-        <TouchableOpacity style={styles.boxOne(bgColorOne)}>
+        <TouchableOpacity
+          style={styles.boxOne(bgColorOne)}
+          onPress={onPressOne}>
           <AntDesign name={icon} size={26} />
         </TouchableOpacity>
       </View>
@@ -30,13 +42,13 @@ const AppBar = ({ bgColor, title, bgColorOne, icon, onPress }) => {
 export default AppBar;
 
 const styles = StyleSheet.create({
-  overlay: {
+  overlay: (top = 10, left = 0, right = 0) => ({
     position: "absolute",
-    top: 10,
-    left: 0,
-    right: 0,
+    top,
+    left,
+    right,
     justifyContent: "center",
-  },
+  }),
   box: (bgColor) => ({
     backgroundColor: bgColor,
     width: 30,
