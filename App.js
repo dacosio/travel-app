@@ -11,6 +11,7 @@ import {
   PlaceDetails,
   HotelList,
   HotelSearch,
+  SelectRoom,
 } from "./screens";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import HotelDetails from "./screens/details/HotelDetails";
@@ -79,6 +80,11 @@ export default function App() {
         <Stack.Screen
           name="HotelSearch"
           component={HotelSearch}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SelectRoom"
+          component={SelectRoom}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
