@@ -1,11 +1,9 @@
 import { View, Text, FlatList } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import AppBar from "../../components/Reusable/AppBar";
-import { COLORS, SIZES } from "../../constants/theme";
 import ReusableTile from "../../components/Reusable/ReusableTile";
+import { SIZES, COLORS } from "../../constants/theme";
 
-const HotelList = ({ navigation }) => {
+const TopBookings = ({ navigation }) => {
   const hotels = [
     {
       _id: "64c674d23cfa5e847bcd5430",
@@ -58,49 +56,25 @@ const HotelList = ({ navigation }) => {
       location: "New York City, NY",
     },
   ];
-
-  useEffect(() => {
-    const filterResults = () => {
-      const filteredResults = hotels.filter((item) =>
-        item.title.toLowerCase().includes(searchKey.toLowerCase())
-      );
-      setSearchResults(filteredResults);
-    };
-    ``;
-    filterResults();
-  }, [searchKey]);
-
   return (
-    <SafeAreaView style={{ marginHorizontal: 20 }}>
-      <View style={{ height: 50 }}>
-        <AppBar
-          title={"Nearby Hotels"}
-          bgColor={COLORS.white}
-          bgColorOne={COLORS.white}
-          icon={"search1"}
-          onPress={() => navigation.goBack()}
-          onPressOne={() => navigation.navigate("HotelSearch")}
-        />
-      </View>
-
-      <View style={{ paddingTop: 20 }}>
-        <FlatList
-          data={hotels}
-          keyExtractor={(item) => item._id}
-          contentContainerStyle={{ columnGap: SIZES.medium }}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <View style={{ marginBottom: 10 }}>
-              <ReusableTile
-                item={item}
-                onPress={() => navigation.navigate("HotelDetails", item._id)}
-              />
-            </View>
-          )}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={{ margin: 20 }}>
+      <FlatList
+        data={hotels}
+        keyExtractor={(item) => item._id}
+        contentContainerStyle={{ columnGap: SIZES.medium }}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View
+            style={{ marginBottom: 10, backgroundColor: COLORS.lightWhite }}>
+            <ReusableTile
+              item={item}
+              onPress={() => navigation.navigate("HotelDetails", item._id)}
+            />
+          </View>
+        )}
+      />
+    </View>
   );
 };
 
-export default HotelList;
+export default TopBookings;

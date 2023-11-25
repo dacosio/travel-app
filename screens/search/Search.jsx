@@ -1,10 +1,20 @@
-import { View } from "react-native";
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+  Image,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import reusable from "../../components/Reusable/reusable.style";
 import styles from "./search.style";
+import { Feather } from "@expo/vector-icons";
+import { COLORS } from "../../constants/theme";
+import ReusableTile from "../../components/Reusable/ReusableTile";
+import HeightSpacer from "../../components/Reusable/HeightSpacer";
 
-const Search = () => {
+const Search = ({ navigation }) => {
   const [searchKey, setSearchKey] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -60,9 +70,56 @@ const Search = () => {
       review: "24455 Reviews",
     },
   ];
+
+  useEffect(() => {
+    const filterResults = () => {
+      const filteredResults = search.filter((item) =>
+        item.title.toLowerCase().includes(searchKey.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    };
+``
+    filterResults();
+  }, [searchKey]);
   return (
     <SafeAreaView style={reusable.container}>
-      <View style={styles.searchContainer}></View>
+      <View style={styles.searchContainer}>
+        <View style={styles.searchWrapper}>
+          <TextInput
+            style={styles.input}
+            value={searchKey}
+            onChangeText={(text) => setSearchKey(text)}
+            placeholder="Where do you want to visit?"
+          />
+        </View>
+        <View>
+          <TouchableOpacity style={styles.searchBtn}>
+            <Feather name="search" size={24} color={COLORS.white} />
+          </TouchableOpacity>
+        </View>
+      </View>
+      {searchResults.length === 0 ? (
+        <View>
+          <HeightSpacer height={"20%"} />
+          <Image
+            source={require("../../assets/images/search.png")}
+            style={styles.searchImage}
+          />
+        </View>
+      ) : (
+        <FlatList
+          data={searchResults}
+          keyExtractor={(item) => item._id}
+          renderItem={({ item }) => (
+            <View style={styles.tile}>
+              <ReusableTile
+                item={item}
+                onPress={() => navigation.navigate("PlaceDetails", item._id)}
+              />
+            </View>
+          )}
+        />
+      )}
     </SafeAreaView>
   );
 };

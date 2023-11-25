@@ -13,6 +13,34 @@ const styles = StyleSheet.create({
     marginVertical: SIZES.medium,
     height: 50,
   },
+  input: {
+    fontFamily: "regular",
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: 50,
+  },
+  searchImage: {
+    resizeMode: "contain",
+    width: "100%",
+    height: SIZES.height / 2.2,
+    paddingHorizontal: 20,
+  },
+  searchWrapper: {
+    flex: 1,
+    marginRight: SIZES.small,
+    borderRadius: SIZES.small,
+  },
+  searchBtn: {
+    width: 50,
+    height: "100%",
+    borderRadius: SIZES.small,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.lightBlue,
+  },
+  tile: {
+    marginBottom: 10,
+  },
 });
 
 export default styles;

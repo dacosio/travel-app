@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home, Profile, Chat, Location } from "../screens";
 import { COLORS } from "../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
+import TopTab from "./TopTab";
 const Tab = createBottomTabNavigator();
 
 const tabBarStyle = {
@@ -78,7 +79,7 @@ const BottomTabNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={TopTab}
         options={{
           tabBarStyle,
           tabBarShowLabel: false,
