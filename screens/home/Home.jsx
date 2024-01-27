@@ -18,24 +18,19 @@ import Recommendations from "../../components/Home/Recommendations";
 import BestHotels from "../../components/Home/BestHotels";
 
 const Home = ({ navigation }) => {
-  
   return (
     <SafeAreaView style={reusable.container}>
       <ScrollView>
         <View>
-          <View style={reusable.rowWithSpace("space-between")}>
+          <View style={styles.header}>
             <ReusableText
-              text={"Hey User!"}
+              text={"Movies App"}
               family={"regular"}
               size={TEXT.large}
               color={COLORS.black}
             />
-            <TouchableOpacity
-              style={styles.box}
-              onPress={() => navigation.navigate("Search")}>
-              <AntDesign name="search1" size={26} />
-            </TouchableOpacity>
           </View>
+          {/* 
           <HeightSpacer height={SIZES.xLarge} />
           <ReusableText
             text={"Places"}
@@ -47,7 +42,7 @@ const Home = ({ navigation }) => {
           <HeightSpacer height={15} />
           <Recommendations />
           <HeightSpacer height={30} />
-          <BestHotels />
+          <BestHotels /> */}
         </View>
       </ScrollView>
     </SafeAreaView>

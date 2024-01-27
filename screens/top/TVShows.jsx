@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const TopInfo = () => {
+const TVShows = () => {
   return (
     <View>
-      <Text>TopInfo</Text>
+      <Text>TVShows</Text>
     </View>
   );
 };
 
-export default TopInfo;
+export default TVShows;

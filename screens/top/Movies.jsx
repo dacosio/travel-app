@@ -2,8 +2,12 @@ import { View, Text, FlatList } from "react-native";
 import React from "react";
 import ReusableTile from "../../components/Reusable/ReusableTile";
 import { SIZES, COLORS } from "../../constants/theme";
+import { useEffect, useState } from "react";
+import { getMoviesByCategory } from "../../services/axiosInstance";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import DropdownComponent from "../../components/Reusable/Dropdown";
 
-const TopBookings = ({ navigation }) => {
+const Movies = ({ navigation }) => {
   const hotels = [
     {
       _id: "64c674d23cfa5e847bcd5430",
@@ -56,11 +60,40 @@ const TopBookings = ({ navigation }) => {
       location: "New York City, NY",
     },
   ];
+  const [movies, setMovies] = useState([]);
+
+  const options = [
+    { label: "Now Playing", value: "now_playing" },
+    { label: "Popular", value: "popular" },
+    { label: "Top Rated", value: "top_rated" },
+    { label: "Upcoming", value: "upcoming" },
+  ];
+  const [category, setCategory] = useState(options[0]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const movies = await getMoviesByCategory(category.value);
+        setMovies(movies.results);
+      } catch (error) {
+        console.error("Error fetching  movies:", error);
+      }
+    };
+
+    fetchMovies();
+  }, [category]);
+
   return (
     <View style={{ margin: 20 }}>
+      <DropdownComponent
+        dropdownLabel={"category"}
+        options={options}
+        value={category}
+        setValue={setCategory}
+      />
       <FlatList
-        data={hotels}
-        keyExtractor={(item) => item._id}
+        data={movies}
+        keyExtractor={(item) => item.id}
         contentContainerStyle={{ columnGap: SIZES.medium }}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
@@ -77,4 +110,4 @@ const TopBookings = ({ navigation }) => {
   );
 };
 
-export default TopBookings;
+export default Movies;

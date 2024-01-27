@@ -3,11 +3,11 @@ import { COLORS } from "../constants/theme";
 
 const styles = StyleSheet.create({
   profile: {
-    position: "absolute",
-    right: 0,
-    left: 0,
-    top: 110,
-    alignItems: "center",
+    // position: "absolute",
+    // right: 0,
+    // left: 0,
+    // top: 110,
+    // alignItems: "center",
   },
   image: {
     resizeMode: "cover",

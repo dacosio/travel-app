@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const TopTrips = () => {
+const SearchResults = () => {
   return (
     <View>
-      <Text>TopTrips</Text>
+      <Text>SearchResults</Text>
     </View>
   );
 };
 
-export default TopTrips;
+export default SearchResults;

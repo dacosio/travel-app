@@ -14,7 +14,7 @@ const ReusableTile = ({ item, onPress }) => {
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={reusable.rowWithSpace("flex-start")}>
         <NetworkImage
-          source={item.imageUrl}
+          source={"https://image.tmdb.org/t/p/original" + item.poster_path}
           width={80}
           height={80}
           borderRadius={12}
@@ -29,24 +29,40 @@ const ReusableTile = ({ item, onPress }) => {
           />
           <HeightSpacer height={8} />
 
-          <ReusableText
-            text={item.location}
-            family={"medium"}
-            size={14}
-            color={COLORS.gray}
-          />
-
-          <HeightSpacer height={8} />
-
           <View style={reusable.rowWithSpace("flex-start")}>
-            <Rating rating={item.rating} />
             <WidthSpacer width={5} />
             <ReusableText
-              text={` (${item.review}) `}
+              text={"Release Date: "}
+              family={"medium"}
+              size={14}
+              color={COLORS.dark}
+            />
+            <ReusableText
+              text={item.release_date}
               family={"medium"}
               size={14}
               color={COLORS.gray}
             />
+           
+          </View>
+
+          <HeightSpacer height={8} />
+
+          <View style={reusable.rowWithSpace("flex-start")}>
+            <WidthSpacer width={5} />
+            <ReusableText
+              text={"Popularity: "}
+              family={"medium"}
+              size={14}
+              color={COLORS.dark}
+            />
+            <ReusableText
+              text={item.popularity}
+              family={"medium"}
+              size={14}
+              color={COLORS.gray}
+            />
+           
           </View>
         </View>
       </View>

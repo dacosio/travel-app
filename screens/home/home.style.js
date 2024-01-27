@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  header: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default styles;

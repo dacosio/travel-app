@@ -16,6 +16,7 @@ import {
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import HotelDetails from "./screens/details/HotelDetails";
 import { SafeAreaView } from "react-native-safe-area-context";
+import TopTab from "./navigation/TopTab";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,13 +39,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="OnBoard"
-          component={Onboarding}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Bottom"
-          component={BottomTabNavigation}
+          name="Top"
+          component={TopTab}
           options={{ headerShown: false }}
         />
         <Stack.Screen
